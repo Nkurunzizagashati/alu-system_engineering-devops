@@ -8,5 +8,5 @@ PATH_TO_FILE = "$1"
 IP = "$2"
 USERNAME = "$3"
 PATH_TO_SSH_KEY = "$4"
-scp -o StrictKeyChecking=no -i "$PATH_TO_SSH_KEY" "$PATH_TO_FILE" "$USERNAME@IP"
+scp -o StrictKeyChecking=no -i "$PATH_TO_SSH_KEY" "$PATH_TO_FILE" "$USERNAME@$IP"
 exit 0
