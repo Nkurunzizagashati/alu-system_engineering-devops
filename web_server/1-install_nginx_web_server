@@ -12,7 +12,6 @@ echo "server {
 
 	root /etc/nginx/html;
 	index index.html index.htm;
-	}
 }
 " > /etc/nginx/sites-available/default
 service nginx restart
