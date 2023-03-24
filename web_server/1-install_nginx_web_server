@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# this script will install nginx and give it some configurations
+apt-get update
+apt-get -y install nginx
+# the above code gets updates and tehn install nginx
+echo "server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+	root /var/www/html;
+	index index.html index.htm;
+
+	server_name _;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+}" > /etc/nginx/sites-available/default
+# this block of code will overwrite the default file with the new configurations
+
+echo "Holberton School" > /var/www/html/index.html
+# this line of code writes the contents we wish to the index.html file
+
+killall -9 nginx
+# this line of code will stop all nginx processes which are running
+/usr/sbin/nginx
+# this line of code will start the nginx with considering the new configuration
+
+# we used the last two lines insteat of using 'systemctl restart nginx' to restart nginx
