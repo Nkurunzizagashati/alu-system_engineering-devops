@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# this script will install HAproxy in lb server and add some configurations to it
+apt-get update
+apt-get install haproxy -y
+
+# the above script will update our system and install haproxy
+
+echo 'ENABLED=1' >> /etc/default/haproxy
+
+# the above code will make sure that HAproxy can be managed via an init script
+
+echo 'frontend http
+		bind *:80
+		mode http
+		default_backend web_servers
+
+backend web_servers
+		balance roundrobin
+		server 5409-web-01 18.208.189.254:80 check
+		server 5409-web-02 54.227.30.49:80 check
+' >> /etc/haproxy/haproxy.cfg
+
+# the above code will append these configurations to the /etx/haproxy/haproxy.cfg file
+
+# then let's restart the haproxy
+
+service haproxy restart
