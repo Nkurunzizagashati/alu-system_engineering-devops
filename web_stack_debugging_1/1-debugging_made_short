@@ -2,4 +2,4 @@
 # make it short and sweet, it will also solve the issue of nginx not listening to port 80 as well
 ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 service nginx restart
-sudo service nginx stop
+kill "$(pgrep 'nginx' | head -1)"
