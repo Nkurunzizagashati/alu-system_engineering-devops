@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # make it short and sweet, it will also solve the issue of nginx not listening to port 80 as well
-sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 service nginx restart
 sudo service nginx stop
