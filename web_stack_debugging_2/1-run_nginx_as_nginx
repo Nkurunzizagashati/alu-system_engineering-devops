@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 # this script fixes the container so that Nginx is running as the nginx user
-sudo chmod -R 755 /etc/nginx/
-sudo systemctl stop apache2
-sudo sed -i 's/Listen 80/Listen 8081/g' /etc/apache2/ports.conf
-sudo systemctl restart apache2
-sudo sed -i 's/listen 80 default_server;/listen 8080 default_server;/g' /etc/nginx/sites-available/default
-sudo systemctl restart nginx
+#!/bin/bash
+chmod -R 755 /etc/nginx/
+pkill -9 apache2
+sed -i 's/8080/8081/g' /etc/apache2/ports.conf
+service apache2 restart
+sed -i 's/80/8080/g' /etc/nginx/sites-enabled/default
+service nginx restart
+
