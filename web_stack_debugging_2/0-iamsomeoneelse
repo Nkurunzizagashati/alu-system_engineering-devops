@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# a script that will run a specific bash command as the specified user
+sudo "$1" -c whoami
